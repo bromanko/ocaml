@@ -16,7 +16,8 @@
         in rec {
           devShells.default = pkgs.mkShell {
             packages = with pkgs;
-              [ ocaml opam dune_3 ] ++ lib.optional stdenv.isDarwin [
+              [ ocaml opam dune_3 ocamlPackages.ocamlformat ]
+              ++ lib.optional stdenv.isDarwin [
                 darwin.apple_sdk.frameworks.CoreFoundation
                 darwin.apple_sdk.frameworks.CoreServices
               ];
