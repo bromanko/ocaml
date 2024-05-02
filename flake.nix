@@ -18,6 +18,13 @@
       perSystem = { pkgs, system, inputs', ... }:
         let
         in rec {
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+            overlays = [ ocaml-overlay.overlays.default ];
+          };
+
+          packages = { inherit (pkgs) ; };
           devShells.default = pkgs.mkShell {
             packages = with pkgs;
               [ ocaml opam dune_3 ocamlPackages.ocamlformat ]
