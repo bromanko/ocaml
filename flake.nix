@@ -1,15 +1,20 @@
 {
-  description = "A very basic flake";
+  description = "Expiments in ocaml";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
-  outputs = { self, nixpkgs }: {
+  outputs = inputs@{ self, nixpkgs, flake-parts, ... }:
+    let
+    in flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "aarch64-darwin" "x86_64-linux" "aarch64-linux" ];
 
-    packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
-
-    packages.x86_64-linux.default = self.packages.x86_64-linux.hello;
-
-  };
+      perSystem = { pkgs, system, inputs', ... }:
+        let
+        in rec {
+          devShells.default = pkgs.mkShell { packages = with pkgs; [ ocaml ]; };
+        };
+    };
 }
