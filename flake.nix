@@ -15,7 +15,7 @@
         let
         in rec {
           devShells.default =
-            pkgs.mkShell { packages = with pkgs; [ ocaml opam ]; };
+            pkgs.mkShell { packages = with pkgs; [ ocaml opam dune_3 ]; };
         };
     };
 }
