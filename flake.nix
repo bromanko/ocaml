@@ -31,7 +31,6 @@
           devshells.default = {
             packages = with pkgs; [
               ocaml
-              ocamlPackages.opam
               ocamlPackages.dune_3
               ocamlPackages.ocamlformat
               ocamlPackages.dream
@@ -41,9 +40,7 @@
             #  darwin.apple_sdk.frameworks.CoreServices
             #];
 
-            devshell.startup.opam.text = ''
-              eval $(opam env)
-            '';
+            devshell.startup.opam.text = "";
           };
 
         };

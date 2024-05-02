@@ -1,4 +1,3 @@
 (executable
- (public_name experiments)
  (name main)
- (libraries experiments))
+ (libraries experiments dream dream-html))
