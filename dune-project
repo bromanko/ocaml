@@ -5,22 +5,15 @@
 (generate_opam_files true)
 
 (source
- (github username/reponame))
+ (github bromanko/ocaml))
 
-(authors "Author Name")
+(authors "bromanko")
 
-(maintainers "Maintainer Name")
+(maintainers "bromanko")
 
-(license LICENSE)
-
-(documentation https://url/to/documentation)
+(license UNLICENSED)
 
 (package
  (name experiments)
- (synopsis "A short synopsis")
- (description "A longer description")
+ (synopsis "Experiments in OCaml")
  (depends ocaml dune)
- (tags
-  (topics "to describe" your project)))
-
-; See the complete stanza docs at https://dune.readthedocs.io/en/stable/dune-files.html#dune-project
