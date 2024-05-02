@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    devshell.url = "github:numtide/devshell";
     ocaml-overlay = {
       url = "github:nix-ocaml/nix-overlays";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,6 +14,8 @@
   outputs = inputs@{ self, nixpkgs, flake-parts, ocaml-overlay, ... }:
     let
     in flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ inputs.devshell.flakeModule ];
+
       systems = [ "aarch64-darwin" "x86_64-linux" "aarch64-linux" ];
 
       perSystem = { pkgs, system, inputs', ... }:
@@ -25,14 +28,24 @@
           };
 
           packages = { inherit (pkgs) ; };
-          devShells.default = pkgs.mkShell {
-            packages = with pkgs;
-              [ ocaml opam dune_3 ocamlPackages.ocamlformat ]
-              ++ lib.optional stdenv.isDarwin [
-                darwin.apple_sdk.frameworks.CoreFoundation
-                darwin.apple_sdk.frameworks.CoreServices
-              ];
+          devshells.default = {
+            packages = with pkgs; [
+              ocaml
+              ocamlPackages.opam
+              ocamlPackages.dune_3
+              ocamlPackages.ocamlformat
+              ocamlPackages.dream
+            ];
+            #++ lib.optional stdenv.isDarwin [
+            #  darwin.apple_sdk.frameworks.CoreFoundation
+            #  darwin.apple_sdk.frameworks.CoreServices
+            #];
+
+            devshell.startup.opam.text = ''
+              eval $(opam env)
+            '';
           };
+
         };
     };
 }
