@@ -14,7 +14,8 @@
       perSystem = { pkgs, system, inputs', ... }:
         let
         in rec {
-          devShells.default = pkgs.mkShell { packages = with pkgs; [ ocaml ]; };
+          devShells.default =
+            pkgs.mkShell { packages = with pkgs; [ ocaml opam ]; };
         };
     };
 }
