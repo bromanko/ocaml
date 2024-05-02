@@ -16,4 +16,4 @@
 (package
  (name experiments)
  (synopsis "Experiments in OCaml")
- (depends ocaml dune)
+ (depends ocaml dune))
