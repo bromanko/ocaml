@@ -34,6 +34,7 @@
             ocamlPackages.ocaml-lsp
             ocamlPackages.utop
 
+            ocamlPackages.base
             ocamlPackages.dream
             ocamlPackages.dream-html
           ];

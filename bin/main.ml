@@ -1,3 +1,5 @@
+open Base
+
 let hello who =
   let open Dream_html in
   let open HTML in
@@ -6,4 +8,6 @@ let hello who =
 let () =
   Dream.run @@ Dream.logger @@ Dream.livereload
   @@ Dream.router
-       [ Dream.get "/" (fun _ -> Dream_html.respond (hello "world")) ]
+       [
+         Dream.get "/" (fun _ -> Dream_html.respond (hello "world of the foo!"));
+       ]
