@@ -39,6 +39,7 @@
             ocamlPackages.dream-html
 
             ocamlPackages.ppx_inline_test
+            ocamlPackages.ppx_expect
           ];
         };
       };
