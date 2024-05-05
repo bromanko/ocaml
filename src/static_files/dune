@@ -1,0 +1,13 @@
+(library
+ (name static_files)
+ (libraries dream))
+
+(rule
+ (target asset.ml)
+ (deps
+  %{workspace_root}/assets/css/main.css
+  (source_tree %{workspace_root}/assets))
+ (action
+  (with-stdout-to
+   %{null}
+   (run %{bin:ocaml-crunch} -m plain %{workspace_root}/assets -o %{target}))))
