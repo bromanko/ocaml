@@ -14,6 +14,6 @@ let cmd =
     let doc = "Dream server" in
     Cmd.info "server" ~version:"%‌%VERSION%%" ~doc
   in
-  Cmd.v info Term.(const Server.start_server $ port)
+  Cmd.v info Term.(const Server.start $ port)
 
 let () = Cmd.eval cmd |> exit

@@ -1,9 +1,8 @@
 open! Core
 
-let start_server port =
-  Dream.run ~port @@ Dream.logger @@ Dream.livereload
-  @@ Dream.router
-       [ Dream.get "/" (fun _ -> Dream_html.respond (Templates.home ())) ]
+let start port =
+  Dream.run ~interface:"0.0.0.0" ~port
+  @@ Dream.logger @@ Dream.livereload @@ Router.router
 
 let rec fact n = if n = 1 then 1 else n * fact (n - 1)
 let%test _ = fact 5 = 120
