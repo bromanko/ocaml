@@ -1,16 +1,9 @@
 open! Core
 
-let hello who =
-  let open Dream_html in
-  let open HTML in
-  html [] [ body [] [ h1 [] [ txt "Hello, %s!" who ] ] ]
-
 let start_server port =
   Dream.run ~port @@ Dream.logger @@ Dream.livereload
   @@ Dream.router
-       [
-         Dream.get "/" (fun _ -> Dream_html.respond (hello "world of the foo!"));
-       ]
+       [ Dream.get "/" (fun _ -> Dream_html.respond (Templates.home ())) ]
 
 let rec fact n = if n = 1 then 1 else n * fact (n - 1)
 let%test _ = fact 5 = 120

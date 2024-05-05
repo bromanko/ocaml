@@ -1,6 +1,6 @@
 (library
  (name server)
- (libraries core dream dream-html)
+ (libraries core dream templates)
  (inline_tests)
  (preprocess
   (pps ppx_expect ppx_inline_test)))
