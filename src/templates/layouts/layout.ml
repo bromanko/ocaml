@@ -6,12 +6,17 @@ let base inner =
     [
       head []
         [
+          meta [ charset "utf-8" ];
+          meta
+            [ name "viewport"; content "width=device-width, initial-scale=1.0" ];
           link
             [
-              rel "sylesheet"; href "%s" (Static_files.Asset.url "css/main.css");
+              rel "stylesheet";
+              (* href "css/main.css" *)
+              href "%s" (Static_files.Asset.url "css/main.css");
             ];
         ];
-      body [] [ inner ];
+      body [ class_ "p-8" ] [ inner ];
     ]
 
 let render = base
