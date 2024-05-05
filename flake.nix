@@ -42,6 +42,8 @@
             ocamlPackages.ppx_inline_test
             ocamlPackages.ppx_expect
           ];
+
+          packages = with pkgs; [ tailwindcss ];
         };
       };
     };
