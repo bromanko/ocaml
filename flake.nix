@@ -33,12 +33,12 @@
             ocamlPackages.ocamlformat
             ocamlPackages.ocaml-lsp
             ocamlPackages.utop
+            ocamlPackages.crunch
 
             ocamlPackages.core
             ocamlPackages.cmdliner
             ocamlPackages.fmt
             ocamlPackages.dream
-            ocamlPackages.crunch
             ocamlPackages.dream-html
 
             ocamlPackages.ppx_inline_test
