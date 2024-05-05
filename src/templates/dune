@@ -1,5 +1,5 @@
 (library
  (name templates)
- (libraries dream dream-html))
+ (libraries static_files dream dream-html))
 
 (include_subdirs unqualified)
