@@ -1,3 +1,5 @@
+let of_url_path = File.of_url_path
+
 module Asset = struct
   let digest = Asset.hash
   let read = Asset.read
