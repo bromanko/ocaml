@@ -1,3 +1,0 @@
-(executable
- (name main)
- (libraries experiments core cmdliner dream dream-html))

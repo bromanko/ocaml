@@ -1,18 +1,6 @@
 open! Core
 open Cmdliner
 
-let hello who =
-  let open Dream_html in
-  let open HTML in
-  html [] [ body [] [ h1 [] [ txt "Hello, %s!" who ] ] ]
-
-let start_server port =
-  Dream.run ~port @@ Dream.logger @@ Dream.livereload
-  @@ Dream.router
-       [
-         Dream.get "/" (fun _ -> Dream_html.respond (hello "world of the foo!"));
-       ]
-
 let port =
   let env =
     let doc = "Overrides the port." in
@@ -26,6 +14,6 @@ let cmd =
     let doc = "Dream server" in
     Cmd.info "server" ~version:"%‌%VERSION%%" ~doc
   in
-  Cmd.v info Term.(const start_server $ port)
+  Cmd.v info Term.(const Server.start_server $ port)
 
 let () = Cmd.eval cmd |> exit

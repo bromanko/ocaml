@@ -1,5 +1,6 @@
 (library
- (name experiments)
+ (name server)
+ (libraries core dream dream-html)
  (inline_tests)
  (preprocess
   (pps ppx_expect ppx_inline_test)))
