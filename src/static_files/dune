@@ -1,6 +1,6 @@
 (library
  (name static_files)
- (libraries dream))
+ (libraries fmt dream))
 
 (rule
  (target asset.ml)

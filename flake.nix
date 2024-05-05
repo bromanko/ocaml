@@ -36,6 +36,7 @@
 
             ocamlPackages.core
             ocamlPackages.cmdliner
+            ocamlPackages.fmt
             ocamlPackages.dream
             ocamlPackages.crunch
             ocamlPackages.dream-html
