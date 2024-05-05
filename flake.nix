@@ -37,6 +37,7 @@
             ocamlPackages.core
             ocamlPackages.cmdliner
             ocamlPackages.dream
+            ocamlPackages.crunch
             ocamlPackages.dream-html
 
             ocamlPackages.ppx_inline_test
