@@ -21,6 +21,7 @@
           overlays = [
             ocaml-overlay.overlays.default
             (import ./nix/overlays/dream.nix)
+            (import ./nix/overlays/daisyui)
           ];
         };
 
@@ -45,7 +46,12 @@
             ocamlPackages.ppx_expect
           ];
 
-          packages = with pkgs; [ tailwindcss ];
+          packages = with pkgs; [ tailwindcss nodePackages.daisyui ];
+
+          shellHook = ''
+            mkdir -p node_modules
+            ln -s ${pkgs.nodePackages.daisyui}/lib/node_modules/daisyui node_modules/daisyui &> /dev/null || true
+          '';
         };
       };
     };
