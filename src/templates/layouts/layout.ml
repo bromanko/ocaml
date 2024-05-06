@@ -13,7 +13,7 @@ let base inner =
             [ name "viewport"; content "width=device-width, initial-scale=1.0" ];
           link [ rel "stylesheet"; href "css/main.css" ];
         ];
-      body [ class_ "bg-red-500 p-8" ] [ inner ];
+      body [ class_ "p-8" ] [ inner ];
     ]
 
 let render = base
