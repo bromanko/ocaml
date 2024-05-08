@@ -4,7 +4,7 @@ let base inner =
   let open Dream_html in
   let open HTML in
   html
-    [ lang "en" ]
+    [ lang "en"; string_attr "data-theme" "emerald" ]
     [
       head []
         [
