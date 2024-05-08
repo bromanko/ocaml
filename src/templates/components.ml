@@ -168,3 +168,25 @@ let link ?(clr = Neutral) ?(md = None) inner =
 let navbar inner = div [ class_ "navbar bg-base-100" ] inner
 let pagination inner = div [ class_ "join" ] inner
 let pagination_button = HTML.button [ class_ "join-item btn btn-outline" ]
+
+type checkbox_modifier = Disabled
+
+let checkbox_modifier_to_class = function
+  | None -> ""
+  | Some mods -> (
+      match List.exists ~f:(fun mod_ -> Poly.(mod_ = Disabled)) mods with
+      | true -> "disabled"
+      | false -> "")
+
+let checkbox_modifiers_is_disabled = function
+  | None -> false
+  | Some mods -> List.exists ~f:(fun mod_ -> Poly.(mod_ = Disabled)) mods
+
+let checkbox ?(mods = None) check =
+  input
+    [
+      type_ "checkbox";
+      class_ "checkbox %s" (checkbox_modifier_to_class mods);
+      (if Bool.equal check true then HTML.checked else null_);
+      (if checkbox_modifiers_is_disabled mods then disabled else null_);
+    ]

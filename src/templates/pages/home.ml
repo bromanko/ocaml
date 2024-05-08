@@ -34,5 +34,7 @@ let render () =
         ];
       h1 [ txt "Navigation" ];
       div [] [ navbar [ button [ txt "daisyUI" ] ] ];
+      h1 [ txt "Forms" ];
+      div [] [ checkbox false ];
     ]
   |> Layout.render

@@ -63,3 +63,7 @@ val link : ?clr:link_color -> ?md:link_modifier option -> node list -> node
 val navbar : node list -> node
 val pagination : node list -> node
 val pagination_button : node list -> node
+
+type checkbox_modifier = Disabled
+
+val checkbox : ?mods:checkbox_modifier list option -> bool -> node
