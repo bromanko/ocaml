@@ -8,5 +8,6 @@ let render () =
       dropdown ~title:"Drop Down"
         [ [ a [] [ txt "Item 1" ] ]; [ a [] [ txt "Item 2" ] ] ];
       badge ~sz:Large ~clr:Info [ txt "Special User" ];
+      link [ txt "This is a link" ];
     ]
   |> Layout.render

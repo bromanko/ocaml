@@ -77,3 +77,37 @@ let badge ?(sz = Medium) ?(clr = Default) inner =
   span
     [ class_ "badge %s %s" (badge_size_to_class sz) (badge_color_to_class clr) ]
     inner
+
+type link_color =
+  | Neutral
+  | Primary
+  | Secondary
+  | Accent
+  | Success
+  | Info
+  | Warning
+  | Error
+
+let link_color_to_class = function
+  | Neutral -> "link-neutral"
+  | Primary -> "link-primary"
+  | Secondary -> "link-secondary"
+  | Accent -> "link-accent"
+  | Success -> "link-success"
+  | Info -> "link-info"
+  | Warning -> "link-warning"
+  | Error -> "link-error"
+
+type link_modifier = HoverUnderline
+
+let link_modifier_to_class m =
+  match m with
+  | Some m -> ( match m with HoverUnderline -> "link-hover")
+  | None -> ""
+
+let link ?(clr = Neutral) ?(md = None) inner =
+  a
+    [
+      class_ "link %s %s" (link_color_to_class clr) (link_modifier_to_class md);
+    ]
+    inner

@@ -40,3 +40,17 @@ type badge_color =
   | Error
 
 val badge : ?sz:badge_size -> ?clr:badge_color -> node list -> node
+
+type link_color =
+  | Neutral
+  | Primary
+  | Secondary
+  | Accent
+  | Success
+  | Info
+  | Warning
+  | Error
+
+type link_modifier = HoverUnderline
+
+val link : ?clr:link_color -> ?md:link_modifier option -> node list -> node
