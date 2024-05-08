@@ -44,13 +44,19 @@
 
             ocamlPackages.ppx_inline_test
             ocamlPackages.ppx_expect
+
+            nodePackages.daisyui
+            nodePackages."@tailwindcss/typography"
           ];
 
-          packages = with pkgs; [ tailwindcss nodePackages.daisyui ];
+          packages = with pkgs; [ tailwindcss ];
 
           shellHook = ''
             mkdir -p node_modules
             ln -s ${pkgs.nodePackages.daisyui}/lib/node_modules/daisyui node_modules/daisyui &> /dev/null || true
+            ln -s ${
+              pkgs.nodePackages."@tailwindcss/typography"
+            }/lib/node_modules/@tailwindcss node_modules/@tailwindcss &> /dev/null || true
           '';
         };
       };
