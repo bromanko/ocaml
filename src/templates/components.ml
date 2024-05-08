@@ -111,3 +111,5 @@ let link ?(clr = Neutral) ?(md = None) inner =
       class_ "link %s %s" (link_color_to_class clr) (link_modifier_to_class md);
     ]
     inner
+
+let navbar inner = div [ class_ "navbar bg-base-100" ] inner

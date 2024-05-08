@@ -54,3 +54,4 @@ type link_color =
 type link_modifier = HoverUnderline
 
 val link : ?clr:link_color -> ?md:link_modifier option -> node list -> node
+val navbar : node list -> node

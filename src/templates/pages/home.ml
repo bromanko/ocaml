@@ -4,10 +4,14 @@ let render () =
   let open Components in
   div []
     [
-      button [ txt "The Button" ];
-      dropdown ~title:"Drop Down"
-        [ [ a [] [ txt "Item 1" ] ]; [ a [] [ txt "Item 2" ] ] ];
-      badge ~sz:Large ~clr:Info [ txt "Special User" ];
-      link [ txt "This is a link" ];
+      div []
+        [
+          button [ txt "The Button" ];
+          dropdown ~title:"Drop Down"
+            [ [ a [] [ txt "Item 1" ] ]; [ a [] [ txt "Item 2" ] ] ];
+          badge ~sz:Large ~clr:Info [ txt "Special User" ];
+          link [ txt "This is a link" ];
+        ];
+      div [] [ navbar [ button [ txt "daisyUI" ] ] ];
     ]
   |> Layout.render
