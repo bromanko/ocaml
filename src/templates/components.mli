@@ -1,28 +1,29 @@
 open Dream_html
 
-type color =
-  | Primary
-  | PrimaryContent
-  | Secondary
-  | SecondaryContent
-  | Accent
-  | AccentContent
+type button_color =
+  | Default
   | Neutral
-  | NeutralContent
-  | Base100
-  | Base200
-  | Base300
-  | BaseContent
+  | Primary
+  | Secondary
+  | Accent
   | Info
-  | InfoContent
   | Success
-  | SuccessContent
   | Warning
-  | WarningContent
   | Error
-  | ErrorContent
+  | Ghost
 
-val button : node list -> node
+type button_modifier = Link | Outline | Active | Disabled | Glass | Wide
+type button_size = XSmall | Small | Medium | Large
+type button_shape = Block | Circle | Square
+
+val button :
+  ?clr:button_color ->
+  ?mods:button_modifier list option ->
+  ?sz:button_size ->
+  ?shp:button_shape option ->
+  node list ->
+  node
+
 val dropdown : title:string -> node list list -> node
 
 type badge_size = XSmall | Small | Medium | Large

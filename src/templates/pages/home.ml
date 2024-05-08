@@ -7,6 +7,9 @@ let render () =
       div []
         [
           button [ txt "The Button" ];
+          button ~clr:Neutral [ txt "Neutral" ];
+          button ~clr:Info ~mods:(Some [ Wide; Outline ]) [ txt "Neutral" ];
+          button ~sz:Small ~shp:(Some Square) ~clr:Warning [ txt "X" ];
           dropdown ~title:"Drop Down"
             [ [ a [] [ txt "Item 1" ] ]; [ a [] [ txt "Item 2" ] ] ];
           badge ~sz:Large ~clr:Info [ txt "Special User" ];

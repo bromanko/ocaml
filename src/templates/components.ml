@@ -2,29 +2,72 @@ open Core
 open Dream_html
 open HTML
 
-type color =
-  | Primary
-  | PrimaryContent
-  | Secondary
-  | SecondaryContent
-  | Accent
-  | AccentContent
+type button_color =
+  | Default
   | Neutral
-  | NeutralContent
-  | Base100
-  | Base200
-  | Base300
-  | BaseContent
+  | Primary
+  | Secondary
+  | Accent
   | Info
-  | InfoContent
   | Success
-  | SuccessContent
   | Warning
-  | WarningContent
   | Error
-  | ErrorContent
+  | Ghost
 
-let button inner = button [ class_ "btn" ] inner
+let button_color_to_class = function
+  | Default -> ""
+  | Neutral -> "btn-neutral"
+  | Primary -> "btn-primary"
+  | Secondary -> "btn-secondary"
+  | Accent -> "btn-accent"
+  | Info -> "btn-info"
+  | Success -> "btn-success"
+  | Warning -> "btn-warning"
+  | Error -> "btn-error"
+  | Ghost -> "btn-ghost"
+
+type button_modifier = Link | Outline | Active | Disabled | Glass | Wide
+
+let button_modifiers_to_class = function
+  | None -> ""
+  | Some mods ->
+      List.fold mods ~init:"" ~f:(fun acc mod_ ->
+          match mod_ with
+          | Link -> acc ^ "btn-link "
+          | Outline -> acc ^ "btn-outline "
+          | Active -> acc ^ "btn-active "
+          | Disabled -> acc ^ "btn-disabled "
+          | Glass -> acc ^ "glass "
+          | Wide -> acc ^ "btn-wide ")
+
+type button_size = XSmall | Small | Medium | Large
+
+let button_size_to_class = function
+  | XSmall -> "btn-xs"
+  | Small -> "btn-sm"
+  | Medium -> "btn-md"
+  | Large -> "btn-lg"
+
+type button_shape = Block | Circle | Square
+
+let button_shape_to_class = function
+  | None -> ""
+  | Some shape -> (
+      match shape with
+      | Block -> "btn-block"
+      | Circle -> "btn-circle"
+      | Square -> "btn-square")
+
+let button ?(clr = Default) ?(mods = None) ?(sz = Medium) ?(shp = None) inner =
+  button
+    [
+      class_ "btn %s %s %s %s"
+        (button_color_to_class clr)
+        (button_modifiers_to_class mods)
+        (button_size_to_class sz)
+        (button_shape_to_class shp);
+    ]
+    inner
 
 let dropdown ~title (items : node list list) =
   div
