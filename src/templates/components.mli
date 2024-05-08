@@ -1,5 +1,10 @@
 open Dream_html
 
+val h1: node list -> node
+val h2: node list -> node
+val h3: node list -> node
+val h4: node list -> node
+
 type button_color =
   | Default
   | Neutral

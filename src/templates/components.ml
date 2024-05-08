@@ -2,6 +2,11 @@ open Core
 open Dream_html
 open HTML
 
+let h1 = h1 [ class_ "text-2xl"]
+let h2 = h2 [ class_ "text-xl"]
+let h3 = h3 [ class_ "text-lg"]
+let h4 = h4 [ class_ "text-md"]
+
 type button_color =
   | Default
   | Neutral

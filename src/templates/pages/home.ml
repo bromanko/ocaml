@@ -4,6 +4,16 @@ let render () =
   let open Components in
   div []
     [
+      h1 [ txt "Typography"];
+      div [ class_ "mb-8"] [
+        h1 [ txt "Heading 1" ];
+        h2 [ txt "Heading 2" ];
+        h3 [ txt "Heading 3" ];
+        h4 [ txt "Heading 4" ];
+
+      ];
+
+      h1 [txt "Buttons"];
       div []
         [
           button [ txt "The Button" ];
