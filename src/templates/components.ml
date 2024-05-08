@@ -48,6 +48,7 @@ let button_modifiers_to_class = function
 let button_modifiers_is_disabled = function
   | None -> false
   | Some mods -> List.exists ~f:(fun mod_ -> Poly.(mod_ = Disabled)) mods
+
 type button_size = XSmall | Small | Medium | Large
 
 let button_size_to_class = function
@@ -165,3 +166,5 @@ let link ?(clr = Neutral) ?(md = None) inner =
     inner
 
 let navbar inner = div [ class_ "navbar bg-base-100" ] inner
+let pagination inner = div [ class_ "join" ] inner
+let pagination_button = HTML.button [ class_ "join-item btn btn-outline" ]
