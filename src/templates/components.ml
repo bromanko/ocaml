@@ -45,6 +45,9 @@ let button_modifiers_to_class = function
           | Glass -> acc ^ "glass "
           | Wide -> acc ^ "btn-wide ")
 
+let button_modifiers_is_disabled = function
+  | None -> false
+  | Some mods -> List.exists ~f:(fun mod_ -> Poly.(mod_ = Disabled)) mods
 type button_size = XSmall | Small | Medium | Large
 
 let button_size_to_class = function
@@ -71,6 +74,7 @@ let button ?(clr = Default) ?(mods = None) ?(sz = Medium) ?(shp = None) inner =
         (button_modifiers_to_class mods)
         (button_size_to_class sz)
         (button_shape_to_class shp);
+      (if button_modifiers_is_disabled mods then disabled else null_);
     ]
     inner
 
