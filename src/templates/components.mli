@@ -64,6 +64,30 @@ val navbar : node list -> node
 val pagination : node list -> node
 val pagination_button : node list -> node
 
+type checkbox_color =
+  | Default
+  | Primary
+  | Secondary
+  | Accent
+  | Success
+  | Warning
+  | Info
+  | Error
+
+type checkbox_size = XSmall | Small | Medium | Large
 type checkbox_modifier = Disabled
 
-val checkbox : ?mods:checkbox_modifier list option -> bool -> node
+val checkbox :
+  ?sz:checkbox_size ->
+  ?clr:checkbox_color ->
+  ?mods:checkbox_modifier list option ->
+  bool ->
+  node
+
+val checkbox_with_label :
+  ?sz:checkbox_size ->
+  ?clr:checkbox_color ->
+  ?mods:checkbox_modifier list option ->
+  ?check:bool ->
+  string ->
+  node

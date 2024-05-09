@@ -169,6 +169,34 @@ let navbar inner = div [ class_ "navbar bg-base-100" ] inner
 let pagination inner = div [ class_ "join" ] inner
 let pagination_button = HTML.button [ class_ "join-item btn btn-outline" ]
 
+type checkbox_color =
+  | Default
+  | Primary
+  | Secondary
+  | Accent
+  | Success
+  | Warning
+  | Info
+  | Error
+
+let checkbox_color_to_class = function
+  | Default -> ""
+  | Primary -> "checkbox-primary"
+  | Secondary -> "checkbox-secondary"
+  | Accent -> "checkbox-accent"
+  | Success -> "checkbox-success"
+  | Warning -> "checkbox-warning"
+  | Info -> "checkbox-info"
+  | Error -> "checkbox-error"
+
+type checkbox_size = XSmall | Small | Medium | Large
+
+let checkbox_size_to_class = function
+  | XSmall -> "checkbox-xs"
+  | Small -> "checkbox-sm"
+  | Medium -> "checkbox-md"
+  | Large -> "checkbox-lg"
+
 type checkbox_modifier = Disabled
 
 let checkbox_modifier_to_class = function
@@ -182,11 +210,27 @@ let checkbox_modifiers_is_disabled = function
   | None -> false
   | Some mods -> List.exists ~f:(fun mod_ -> Poly.(mod_ = Disabled)) mods
 
-let checkbox ?(mods = None) check =
+let checkbox ?(sz = Medium) ?(clr = Default) ?(mods = None) check =
   input
     [
       type_ "checkbox";
-      class_ "checkbox %s" (checkbox_modifier_to_class mods);
+      class_ "checkbox %s %s %s"
+        (checkbox_size_to_class sz)
+        (checkbox_color_to_class clr)
+        (checkbox_modifier_to_class mods);
       (if Bool.equal check true then HTML.checked else null_);
       (if checkbox_modifiers_is_disabled mods then disabled else null_);
+    ]
+
+let checkbox_with_label ?(sz = Medium) ?(clr = Default) ?(mods = None)
+    ?(check = false) lbl =
+  div
+    [ class_ "form-control" ]
+    [
+      label
+        [ class_ "label cursor-pointer" ]
+        [
+          span [ class_ "label-text" ] [ txt "%s" lbl ];
+          checkbox ~sz ~clr ~mods check;
+        ];
     ]
